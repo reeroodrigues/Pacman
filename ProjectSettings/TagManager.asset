@@ -2,8 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Pellet
+  - Portal
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - Pellet
   - Obstacle
   - Node
-  - 
-  - 
+  - Wall
+  - Background
   - 
   - 
   - 
@@ -41,3 +44,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Gameplay
+    uniqueID: 3243600959
+    locked: 0
+  - name: Background
+    uniqueID: 9072037
+    locked: 0
+  - name: Tilemap
+    uniqueID: 4257360587
+    locked: 0
+  - name: Items
+    uniqueID: 1758685183
+    locked: 0
+  - name: Characters
+    uniqueID: 676014775
+    locked: 0
+  - name: FX
+    uniqueID: 1102985229
+    locked: 0
+  - name: UI
+    uniqueID: 249281043
+    locked: 0
+  m_RenderingLayers:
+  - Default

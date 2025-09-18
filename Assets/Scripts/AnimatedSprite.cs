@@ -7,51 +7,70 @@ public class AnimatedSprite : MonoBehaviour
     public float animationTime = 0.25f;
     public bool loop = true;
 
-    private SpriteRenderer spriteRenderer;
-    private int animationFrame;
+    private SpriteRenderer _spriteRenderer;
+    private int _animationFrame;
+
+    public bool Finished { get; private set; }
+    public float TotalDuration => (sprites != null ? sprites.Length : 0) * animationTime;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
     {
-        spriteRenderer.enabled = true;
+        _spriteRenderer.enabled = true;
+        Finished = false;
+        
+        if (!IsInvoking(nameof(Advance)) && sprites.Length > 0)
+            InvokeRepeating(nameof(Advance), animationTime, animationTime);
     }
 
     private void OnDisable()
     {
-        spriteRenderer.enabled = false;
+        _spriteRenderer.enabled = false;
+        CancelInvoke(nameof(Advance));
     }
 
     private void Start()
     {
-        InvokeRepeating(nameof(Advance), animationTime, animationTime);
+        if (!IsInvoking(nameof(Advance)) && sprites.Length > 0)
+            InvokeRepeating(nameof(Advance), animationTime, animationTime);
     }
 
     private void Advance()
     {
-        if (!spriteRenderer.enabled) {
-            return;
+        if (!_spriteRenderer.enabled) return;
+
+        _animationFrame++;
+
+        if (_animationFrame >= sprites.Length)
+        {
+            if (loop)
+            {
+                _animationFrame = 0;
+            }
+            else
+            {
+                Finished = true;
+                CancelInvoke(nameof(Advance));
+                return;
+            }
         }
 
-        animationFrame++;
-
-        if (animationFrame >= sprites.Length && loop) {
-            animationFrame = 0;
-        }
-
-        if (animationFrame >= 0 && animationFrame < sprites.Length) {
-            spriteRenderer.sprite = sprites[animationFrame];
-        }
+        if (_animationFrame >= 0 && _animationFrame < sprites.Length)
+            _spriteRenderer.sprite = sprites[_animationFrame];
     }
 
     public void Restart()
     {
-        animationFrame = -1;
-
+        Finished = false;
+        _animationFrame = -1;
+        
+        CancelInvoke(nameof(Advance));
+        if (sprites.Length > 0)
+            InvokeRepeating(nameof(Advance), 0f, animationTime);
         Advance();
     }
-
 }

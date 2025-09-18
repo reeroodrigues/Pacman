@@ -6,6 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f3bca271695a7724c995a4160e74d793
+  - enabled: 1
     path: Assets/Scenes/Pacman.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/Pacman - Second Phase.unity
+    guid: 7e646881077e8504e8df274fe5fe911d
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: f6a6f86b57ffd8d498df64fc3cb4ac39
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: cf7dd2943359f2a4ca797c38044adbf0, type: 3}
+  m_UseUCBPForAssetBundles: 0

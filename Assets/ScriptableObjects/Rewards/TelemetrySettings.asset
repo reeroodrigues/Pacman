@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1dd3fbe1cc4dc4907dbaa78aaefa14, type: 3}
+  m_Name: TelemetrySettings
+  m_EditorClassIdentifier: 
+  enableTelemetry: 1
+  localFileName: RewardsTelemetry.log
+  sendToServer: 0
+  endpointUrl: 
+  flushIntervalSeconds: 10
+  batchSize: 20
+  authHeaderKey: Authorization
+  authHeaderValue: 
+  includeDeviceId: 0

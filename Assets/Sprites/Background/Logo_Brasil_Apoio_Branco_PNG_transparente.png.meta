@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: 5ef4d6189107a5942856e5aeda11f950
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4693544900666041665
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_0
+  - first:
+      213: 3028376857358787798
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_1
+  - first:
+      213: -4695062751975941172
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_2
+  - first:
+      213: -4121921971231910726
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_3
+  - first:
+      213: -4155918815087714259
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_4
+  - first:
+      213: -4131322751299780318
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_5
+  - first:
+      213: 4740835390443878093
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_6
+  - first:
+      213: -3869182387499284313
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_7
+  - first:
+      213: -3238721556764376653
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_8
+  - first:
+      213: -3265945133552818084
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_9
+  - first:
+      213: -6504436122908884314
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_10
+  - first:
+      213: -3826241206728786296
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_11
+  - first:
+      213: -7471021098900355224
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_12
+  - first:
+      213: -8102491572362947591
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_13
+  - first:
+      213: 2191915423239889654
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_14
+  - first:
+      213: 3853658664657826314
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_15
+  - first:
+      213: -39160504315908560
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_16
+  - first:
+      213: -7639463114352118288
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_17
+  - first:
+      213: -8583637526279675827
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_18
+  - first:
+      213: 946184844301133090
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_19
+  - first:
+      213: 1142584991775393452
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_20
+  - first:
+      213: 8714809066075895478
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_21
+  - first:
+      213: -5705449932507432733
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_22
+  - first:
+      213: -8681497063884701213
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_23
+  - first:
+      213: 8355529929281095784
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_24
+  - first:
+      213: 2989392743002769561
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_25
+  - first:
+      213: 7518314802386346772
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_26
+  - first:
+      213: -8503695644366130750
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_27
+  - first:
+      213: -1254511725018399679
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_28
+  - first:
+      213: -1838159580775281711
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_29
+  - first:
+      213: -2519263684282706135
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_30
+  - first:
+      213: 1810830377085514217
+    second: Logo_Brasil_Apoio_Branco_PNG_transparente_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_0
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1017
+        width: 2920
+        height: 2919
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 145ab8d3832d22140800000000000000
+      internalID: 4693544900666041665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_1
+      rect:
+        serializedVersion: 2
+        x: 4197
+        y: 2911
+        width: 203
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d462ece4b4f60a20800000000000000
+      internalID: 3028376857358787798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_2
+      rect:
+        serializedVersion: 2
+        x: 4620
+        y: 2911
+        width: 216
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccb5e467d49c7deb0800000000000000
+      internalID: -4695062751975941172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_3
+      rect:
+        serializedVersion: 2
+        x: 5031
+        y: 2911
+        width: 238
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab418d85ecdfbc6c0800000000000000
+      internalID: -4121921971231910726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_4
+      rect:
+        serializedVersion: 2
+        x: 5454
+        y: 2906
+        width: 197
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d20a55f4bd53356c0800000000000000
+      internalID: -4155918815087714259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_5
+      rect:
+        serializedVersion: 2
+        x: 5872
+        y: 2911
+        width: 40
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 221894ca8d79aa6c0800000000000000
+      internalID: -4131322751299780318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_6
+      rect:
+        serializedVersion: 2
+        x: 6138
+        y: 2911
+        width: 176
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6f10a6ba4dac140800000000000000
+      internalID: 4740835390443878093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_7
+      rect:
+        serializedVersion: 2
+        x: 4175
+        y: 2128
+        width: 441
+        height: 587
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a848ed4e17ed4ac0800000000000000
+      internalID: -3869182387499284313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_8
+      rect:
+        serializedVersion: 2
+        x: 4703
+        y: 2128
+        width: 378
+        height: 582
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b1c8a257efbd03d0800000000000000
+      internalID: -3238721556764376653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_9
+      rect:
+        serializedVersion: 2
+        x: 5195
+        y: 2119
+        width: 377
+        height: 601
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c582baa64380da2d0800000000000000
+      internalID: -3265945133552818084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_10
+      rect:
+        serializedVersion: 2
+        x: 5710
+        y: 2128
+        width: 92
+        height: 582
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a20cc5eec99bb5a0800000000000000
+      internalID: -6504436122908884314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_11
+      rect:
+        serializedVersion: 2
+        x: 5935
+        y: 2119
+        width: 377
+        height: 601
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ef7ff05e576eac0800000000000000
+      internalID: -3826241206728786296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_12
+      rect:
+        serializedVersion: 2
+        x: 6411
+        y: 1949
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 867889ac4e9915890800000000000000
+      internalID: -7471021098900355224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_13
+      rect:
+        serializedVersion: 2
+        x: 4175
+        y: 1720
+        width: 171
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f3d5b108da2e8f80800000000000000
+      internalID: -8102491572362947591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_14
+      rect:
+        serializedVersion: 2
+        x: 4399
+        y: 1720
+        width: 127
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f2e9e3d67f3b6e10800000000000000
+      internalID: 2191915423239889654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_15
+      rect:
+        serializedVersion: 2
+        x: 4575
+        y: 1720
+        width: 135
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0239805322fa7530800000000000000
+      internalID: 3853658664657826314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_16
+      rect:
+        serializedVersion: 2
+        x: 4762
+        y: 1720
+        width: 28
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e66039abfd47ff0800000000000000
+      internalID: -39160504315908560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_17
+      rect:
+        serializedVersion: 2
+        x: 4842
+        y: 1717
+        width: 124
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f5b75ae5cc2bf590800000000000000
+      internalID: -7639463114352118288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_18
+      rect:
+        serializedVersion: 2
+        x: 5009
+        y: 1720
+        width: 27
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40236dd52bc0e880800000000000000
+      internalID: -8583637526279675827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_19
+      rect:
+        serializedVersion: 2
+        x: 5089
+        y: 1720
+        width: 137
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2256d605a16812d00800000000000000
+      internalID: 946184844301133090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_20
+      rect:
+        serializedVersion: 2
+        x: 5262
+        y: 1720
+        width: 158
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca607701ff64bdf00800000000000000
+      internalID: 1142584991775393452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_21
+      rect:
+        serializedVersion: 2
+        x: 5546
+        y: 1720
+        width: 134
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b6becc2ca831f870800000000000000
+      internalID: 8714809066075895478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_22
+      rect:
+        serializedVersion: 2
+        x: 5733
+        y: 1720
+        width: 27
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e83e11e38b22d0b0800000000000000
+      internalID: -5705449932507432733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_23
+      rect:
+        serializedVersion: 2
+        x: 5796
+        y: 1720
+        width: 157
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e14e8cba60258780800000000000000
+      internalID: -8681497063884701213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_24
+      rect:
+        serializedVersion: 2
+        x: 5983
+        y: 1717
+        width: 131
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 868c1f0833ec4f370800000000000000
+      internalID: 8355529929281095784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_25
+      rect:
+        serializedVersion: 2
+        x: 6163
+        y: 1720
+        width: 137
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9988fcc7cd47c7920800000000000000
+      internalID: 2989392743002769561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_26
+      rect:
+        serializedVersion: 2
+        x: 6353
+        y: 1717
+        width: 134
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413acc1aa7b665860800000000000000
+      internalID: 7518314802386346772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_27
+      rect:
+        serializedVersion: 2
+        x: 6536
+        y: 1717
+        width: 131
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c1358fadddccf980800000000000000
+      internalID: -8503695644366130750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_28
+      rect:
+        serializedVersion: 2
+        x: 6699
+        y: 1720
+        width: 136
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c37b79b34179ee0800000000000000
+      internalID: -1254511725018399679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_29
+      rect:
+        serializedVersion: 2
+        x: 6870
+        y: 1720
+        width: 27
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db886ba99b8d76e0800000000000000
+      internalID: -1838159580775281711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_30
+      rect:
+        serializedVersion: 2
+        x: 6950
+        y: 1717
+        width: 124
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92799cad607c90dd0800000000000000
+      internalID: -2519263684282706135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo_Brasil_Apoio_Branco_PNG_transparente_31
+      rect:
+        serializedVersion: 2
+        x: 7100
+        y: 1720
+        width: 157
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e13bae32ac512910800000000000000
+      internalID: 1810830377085514217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Logo_Brasil_Apoio_Branco_PNG_transparente_0: 4693544900666041665
+      Logo_Brasil_Apoio_Branco_PNG_transparente_1: 3028376857358787798
+      Logo_Brasil_Apoio_Branco_PNG_transparente_10: -6504436122908884314
+      Logo_Brasil_Apoio_Branco_PNG_transparente_11: -3826241206728786296
+      Logo_Brasil_Apoio_Branco_PNG_transparente_12: -7471021098900355224
+      Logo_Brasil_Apoio_Branco_PNG_transparente_13: -8102491572362947591
+      Logo_Brasil_Apoio_Branco_PNG_transparente_14: 2191915423239889654
+      Logo_Brasil_Apoio_Branco_PNG_transparente_15: 3853658664657826314
+      Logo_Brasil_Apoio_Branco_PNG_transparente_16: -39160504315908560
+      Logo_Brasil_Apoio_Branco_PNG_transparente_17: -7639463114352118288
+      Logo_Brasil_Apoio_Branco_PNG_transparente_18: -8583637526279675827
+      Logo_Brasil_Apoio_Branco_PNG_transparente_19: 946184844301133090
+      Logo_Brasil_Apoio_Branco_PNG_transparente_2: -4695062751975941172
+      Logo_Brasil_Apoio_Branco_PNG_transparente_20: 1142584991775393452
+      Logo_Brasil_Apoio_Branco_PNG_transparente_21: 8714809066075895478
+      Logo_Brasil_Apoio_Branco_PNG_transparente_22: -5705449932507432733
+      Logo_Brasil_Apoio_Branco_PNG_transparente_23: -8681497063884701213
+      Logo_Brasil_Apoio_Branco_PNG_transparente_24: 8355529929281095784
+      Logo_Brasil_Apoio_Branco_PNG_transparente_25: 2989392743002769561
+      Logo_Brasil_Apoio_Branco_PNG_transparente_26: 7518314802386346772
+      Logo_Brasil_Apoio_Branco_PNG_transparente_27: -8503695644366130750
+      Logo_Brasil_Apoio_Branco_PNG_transparente_28: -1254511725018399679
+      Logo_Brasil_Apoio_Branco_PNG_transparente_29: -1838159580775281711
+      Logo_Brasil_Apoio_Branco_PNG_transparente_3: -4121921971231910726
+      Logo_Brasil_Apoio_Branco_PNG_transparente_30: -2519263684282706135
+      Logo_Brasil_Apoio_Branco_PNG_transparente_31: 1810830377085514217
+      Logo_Brasil_Apoio_Branco_PNG_transparente_4: -4155918815087714259
+      Logo_Brasil_Apoio_Branco_PNG_transparente_5: -4131322751299780318
+      Logo_Brasil_Apoio_Branco_PNG_transparente_6: 4740835390443878093
+      Logo_Brasil_Apoio_Branco_PNG_transparente_7: -3869182387499284313
+      Logo_Brasil_Apoio_Branco_PNG_transparente_8: -3238721556764376653
+      Logo_Brasil_Apoio_Branco_PNG_transparente_9: -3265945133552818084
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

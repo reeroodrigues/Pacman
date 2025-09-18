@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efc3e670c77fe5498f9e1b8b8f0c0d2, type: 3}
+  m_Name: RewardConfig
+  m_EditorClassIdentifier: 
+  maxScore: 2770
+  autoPercentBands: 0
+  useRemote: 0
+  remoteUrl: 
+  categories:
+  - id: 1
+    name: Perfect
+    items:
+    - id: labubu
+      name: Labubu
+      sprite: {fileID: 3639779550037775508, guid: 0c38e2d37147670498381c93be6d5bcd, type: 3}
+      initialDailyStock: 20
+      totalCampaignStock: 20
+    manualBand:
+      min: 100
+      max: 100
+  - id: 2
+    name: Top
+    items:
+    - id: garrafa
+      name: Garrafa
+      sprite: {fileID: -121867222499184566, guid: 8d88edd1621c014429e86f91cf4afe94, type: 3}
+      initialDailyStock: 65
+      totalCampaignStock: 65
+    manualBand:
+      min: 54.01
+      max: 99
+  - id: 3
+    name: Medio
+    items:
+    - id: sacola
+      name: Sacola
+      sprite: {fileID: 3759194537766555089, guid: 452b42b2618aacb4ba70297f740ca18a, type: 3}
+      initialDailyStock: 135
+      totalCampaignStock: 135
+    manualBand:
+      min: 36.01
+      max: 54
+  - id: 4
+    name: Base
+    items:
+    - id: ventosa
+      name: Ventosa
+      sprite: {fileID: 0}
+      initialDailyStock: 50
+      totalCampaignStock: 50
+    manualBand:
+      min: 25.01
+      max: 36
+  - id: 5
+    name: "M\xE9dio"
+    items:
+    - id: caneta
+      name: Caneta
+      sprite: {fileID: -121867222499184566, guid: 8d88edd1621c014429e86f91cf4afe94, type: 3}
+      initialDailyStock: 50
+      totalCampaignStock: 50
+    manualBand:
+      min: 0.2
+      max: 25
+  - id: 6
+    name: "M\xE9dio"
+    items:
+    - id: canetazero
+      name: Caneta
+      sprite: {fileID: -121867222499184566, guid: 8d88edd1621c014429e86f91cf4afe94, type: 3}
+      initialDailyStock: 50
+      totalCampaignStock: 50
+    manualBand:
+      min: 0
+      max: 0

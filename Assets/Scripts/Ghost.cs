@@ -1,25 +1,35 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [DefaultExecutionOrder(-10)]
 [RequireComponent(typeof(Movement))]
 public class Ghost : MonoBehaviour
 {
-    public Movement movement { get; private set; }
-    public GhostHome home { get; private set; }
-    public GhostScatter scatter { get; private set; }
-    public GhostChase chase { get; private set; }
-    public GhostFrightened frightened { get; private set; }
+    [Header("Audio")]
+    [SerializeField] private SoundEvent sfxGhostEaten;
+    [SerializeField] private SoundEvent sfxReturnToHome;
+    // [SerializeField] private bool resolveOnFrightenedExit = true;
+
+    public Movement Movement { get; private set; }
+    public GhostHome Home { get; private set; }
+    public GhostScatter Scatter { get; private set; }
+    public GhostChase Chase { get; private set; }
+    public GhostFrightened Frightened { get; private set; }
     public GhostBehavior initialBehavior;
     public Transform target;
     public int points = 200;
+    // private bool _wasFrightened;
+    // private int _wallContactFrames = 0;
+    // private const int WallContactFrameThreshold = 6;
 
     private void Awake()
     {
-        movement = GetComponent<Movement>();
-        home = GetComponent<GhostHome>();
-        scatter = GetComponent<GhostScatter>();
-        chase = GetComponent<GhostChase>();
-        frightened = GetComponent<GhostFrightened>();
+        Movement   = GetComponent<Movement>();
+        Home       = GetComponent<GhostHome>();
+        Scatter    = GetComponent<GhostScatter>();
+        Chase      = GetComponent<GhostChase>();
+        Frightened = GetComponent<GhostFrightened>();
     }
 
     private void Start()
@@ -27,27 +37,38 @@ public class Ghost : MonoBehaviour
         ResetState();
     }
 
+    // private void Update()
+    // {
+    //     bool nowFrightened = Frightened != null && Frightened.enabled;
+    //     
+    //     if (resolveOnFrightenedExit && _wasFrightened && !nowFrightened)
+    //     {
+    //         if (Movement != null && Movement.Occupied(Movement.direction))
+    //         {
+    //             Movement.SnapToGridCenter();
+    //             Movement.TryResolveStuck(trySmallerCast: true);
+    //         }
+    //     }
+    //
+    //     _wasFrightened = nowFrightened;
+    // }
+
     public void ResetState()
     {
         gameObject.SetActive(true);
-        movement.ResetState();
+        Movement.ResetState();
 
-        frightened.Disable();
-        chase.Disable();
-        scatter.Enable();
+        Frightened.Disable();
+        Chase.Disable();
+        Scatter.Enable();
 
-        if (home != initialBehavior) {
-            home.Disable();
-        }
-
-        if (initialBehavior != null) {
-            initialBehavior.Enable();
-        }
+        if (Home != initialBehavior) Home.Disable();
+        if (initialBehavior != null) initialBehavior.Enable();
+        // _wasFrightened = Frightened != null  && Frightened.enabled;
     }
 
     public void SetPosition(Vector3 position)
     {
-        // Keep the z-position the same since it determines draw depth
         position.z = transform.position.z;
         transform.position = position;
     }
@@ -56,12 +77,19 @@ public class Ghost : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
         {
-            if (frightened.enabled) {
+            if (Frightened.enabled)
+            {
+                if (AudioManager.I != null)
+                {
+                    if(sfxGhostEaten) AudioManager.I.PlayAt(sfxGhostEaten, transform.position);
+                    if(sfxReturnToHome) AudioManager.I.PlayAt(sfxReturnToHome, transform.position);
+                }
                 GameManager.Instance.GhostEaten(this);
-            } else {
+            }
+            else
+            {
                 GameManager.Instance.PacmanEaten();
             }
         }
     }
-
 }
