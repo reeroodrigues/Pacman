@@ -55,7 +55,7 @@ Bibliotecas: Unity Tilemap System, DOTween (para animações e transições) e I
 📸 Screenshots:
 
 Tela de edição de quantidade de prêmios (disponibilizado para os promoters do evento terem controle)
-![Menu Inicial](Screenshots/test.gif)
+![Menu Inicial](Assets/Screenshots/test.gif)
 
 Gameplay - Premiações:
 
