@@ -60,28 +60,28 @@ Tela de edição de quantidade de prêmios (disponibilizado para os promoters do
 Gameplay - Premiações:
 
 Gameplay - Sem prêmios:
-[Vídeo]
+![Gameplay](Assets/Screenshots/sempremio.gif)
 
 Gameplay - Prêmio: Caneta
-[Vídeo]
+![Gameplay](Assets/Screenshots/caneta.gif)
 
 Gameplay - Prêmio: Ventosa
-[Vídeo]
+![Gameplay](Assets/Screenshots/ventosa.gif)
 
 Gameplay - Prêmio: Sacola
-[Vídeo]
+![Gameplay](Assets/Screenshots/sacola.gif)
 
 Gameplay - Prêmio: Garrafa
-[Vídeo]
+![Gameplay](Assets/Screenshots/garrafa.gif)
 
 Gameplay - Prêmio máximo: Labubu
-[Vídeo]
+![Gameplay](Assets/Screenshots/labubu.gif)
 
 Gameplay - Mudança de mapas:
-[Vídeo]
+![Gameplay](Assets/Screenshots/mudancademapas.gif)
 
 Tela de edição com a persistência de dados após várias rodadas de premiação:
-[Vídeo]
+![Gameplay](Assets/Screenshots/persistenciadedados.gif)
 
 🎯 Como Jogar:
 
