@@ -8,27 +8,22 @@ public class MoveButtons : MonoBehaviour
 
     public float speed = 400f; 
 
-    private RectTransform rect;
-    private Vector2 targetPosition;
+    private RectTransform _rect;
+    private Vector2 _targetPosition;
 
     void Start()
     {
-        rect = GetComponent<RectTransform>();
+        _rect = GetComponent<RectTransform>();
 
-        float currentY = rect.anchoredPosition.y;
+        var currentY = _rect.anchoredPosition.y;
 
-        switch (buttonSide)
+        _targetPosition = buttonSide switch
         {
-            case Side.Left:
-                targetPosition = new Vector2(37f, currentY);
-                break;
-            case Side.Right:
-                targetPosition = new Vector2(-41f, currentY);
-                break;
-            case Side.RightVictory:
-                targetPosition = new Vector2(-106f, currentY);
-                break;
-        }
+            Side.Left => new Vector2(37f, currentY),
+            Side.Right => new Vector2(-41f, currentY),
+            Side.RightVictory => new Vector2(-215.1f, currentY),
+            _ => _targetPosition
+        };
 
         StartCoroutine(MoveToTarget());
     }
@@ -37,16 +32,16 @@ public class MoveButtons : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        while (Vector2.Distance(rect.anchoredPosition, targetPosition) > 0.1f)
+        while (Vector2.Distance(_rect.anchoredPosition, _targetPosition) > 0.1f)
         {
-            rect.anchoredPosition = Vector2.MoveTowards(
-                rect.anchoredPosition,
-                targetPosition,
+            _rect.anchoredPosition = Vector2.MoveTowards(
+                _rect.anchoredPosition,
+                _targetPosition,
                 speed * Time.deltaTime
             );
             yield return null;
         }
 
-        rect.anchoredPosition = targetPosition;
+        _rect.anchoredPosition = _targetPosition;
     }
 }

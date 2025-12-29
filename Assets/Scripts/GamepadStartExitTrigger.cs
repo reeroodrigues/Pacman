@@ -18,8 +18,8 @@ public class GamepadStartExitTrigger : MonoBehaviour
     [SerializeField] private bool enableAudioToggle = true;
     [SerializeField] private bool acceptTouchpadClick = true;
 
-    private static bool sMuted;
-    private const string K_MUTE = "mute";
+    private static bool _sMuted;
+    private const string KMute = "mute";
 
     void Reset()
     {
@@ -28,7 +28,7 @@ public class GamepadStartExitTrigger : MonoBehaviour
 
     private void Awake()
     {
-        sMuted = PlayerPrefs.GetInt(K_MUTE, 0) == 1;
+        _sMuted = PlayerPrefs.GetInt(KMute, 0) == 1;
         ApplyAudio();
     }
 
@@ -85,14 +85,14 @@ public class GamepadStartExitTrigger : MonoBehaviour
 
     private void ToggleAudio()
     {
-        sMuted = !sMuted;
-        PlayerPrefs.SetInt(K_MUTE, sMuted ? 1 : 0);
+        _sMuted = !_sMuted;
+        PlayerPrefs.SetInt(KMute, _sMuted ? 1 : 0);
         ApplyAudio();
     }
 
     private void ApplyAudio()
     {
-        AudioListener.volume = sMuted ? 0f : 1f;
+        AudioListener.volume = _sMuted ? 0f : 1f;
     }
 
     private void OpenPanel()
