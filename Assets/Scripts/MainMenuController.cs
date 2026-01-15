@@ -77,7 +77,7 @@ public class MainMenuController : MonoBehaviour
         if (EventSystem.current && startButton)
             EventSystem.current.SetSelectedGameObject(startButton.gameObject);
 
-        CheckRegistrationStatus();
+        ClearPlayerRegistrationForNewSession();
         HideErrorMessage();
     }
 
@@ -107,18 +107,34 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    private void CheckRegistrationStatus()
+    private void ClearPlayerRegistrationForNewSession()
     {
-        if (_rankingManager != null && _rankingManager.IsPlayerRegistered())
-        {
-            if (registrationPanel != null)
-                registrationPanel.SetActive(false);
-        }
-        else
-        {
-            if (registrationPanel != null)
-                registrationPanel.SetActive(true);
-        }
+        Debug.Log("[MainMenuController] B2B Mode: Clearing player registration for new session");
+        
+        PlayerPrefs.DeleteKey("PlayerRegistered");
+        PlayerPrefs.DeleteKey("PlayerName");
+        PlayerPrefs.DeleteKey("PlayerEmail");
+        PlayerPrefs.DeleteKey("PlayerPhone");
+        PlayerPrefs.Save();
+        
+        ClearInputFields();
+        
+        if (registrationPanel != null)
+            registrationPanel.SetActive(true);
+        
+        Debug.Log("[MainMenuController] Registration cleared. Ready for new player.");
+    }
+    
+    private void ClearInputFields()
+    {
+        if (nameInputField != null)
+            nameInputField.text = "";
+        
+        if (emailInputField != null)
+            emailInputField.text = "";
+        
+        if (cellphoneInputField != null)
+            cellphoneInputField.text = "";
     }
 
     private void Update()
@@ -139,16 +155,7 @@ public class MainMenuController : MonoBehaviour
     {
         if (_loading) return;
 
-        Debug.Log("[MainMenuController] Start button clicked");
-        
-        if (_rankingManager != null && _rankingManager.IsPlayerRegistered())
-        {
-            Debug.Log("[MainMenuController] Player already registered, starting game directly");
-            StartGame();
-            return;
-        }
-
-        Debug.Log("[MainMenuController] Player not registered, attempting registration...");
+        Debug.Log("[MainMenuController] Start button clicked - B2B Event Mode");
         
         var playerName = nameInputField.text.Trim();
         var playerEmail = emailInputField.text.Trim();
@@ -175,7 +182,7 @@ public class MainMenuController : MonoBehaviour
             if (registrationPanel != null)
                 registrationPanel.SetActive(false);
             
-            StartGame();
+            LoadGameScene();
         }
         else
         {
@@ -226,54 +233,6 @@ public class MainMenuController : MonoBehaviour
     {
         if (errorMessageText != null)
             errorMessageText.gameObject.SetActive(false);
-    }
-
-    private async void StartGame()
-    {
-        if (_loading) return;
-
-        Debug.Log("[MainMenuController] StartGame() called");
-        
-        if (_rankingManager != null && _rankingManager.IsPlayerRegistered())
-        {
-            Debug.Log("[MainMenuController] Player already registered, loading game directly");
-            LoadGameScene();
-            return;
-        }
-
-        Debug.Log("[MainMenuController] Player not registered, attempting registration...");
-        
-        var playerName = nameInputField.text.Trim();
-        var playerEmail = emailInputField.text.Trim();
-        var playerCellphone = cellphoneInputField.text.Trim();
-        
-        Debug.Log($"[MainMenuController] Form data - Name: '{playerName}', Email: '{playerEmail}', Phone: '{playerCellphone}'");
-
-        var result = await _playerRegistrationService.RegisterPlayerAsync(
-            playerName, 
-            playerEmail,
-            playerCellphone,
-            consent: true);
-        
-        Debug.Log($"[MainMenuController] Registration result: Success={result.Success}, Message='{result.ErrorMessage}'");
-
-        if (result.Success)
-        {
-            HideErrorMessage();
-            
-            await RegisterWithRankingManager(playerName, playerEmail, playerCellphone);
-            
-            SendToGoogleSheets(playerName, playerEmail, playerCellphone);
-            
-            if (registrationPanel != null)
-                registrationPanel.SetActive(false);
-            
-            LoadGameScene();
-        }
-        else
-        {
-            ShowErrorMessage(result.ErrorMessage);
-        }
     }
 
     private void LoadGameScene()

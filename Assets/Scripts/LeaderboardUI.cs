@@ -66,14 +66,22 @@ public class LeaderboardUI  : MonoBehaviour
         
         if (_rankingManager == null)
         {
-            Debug.LogWarning("RankingManager is null, cannot refresh leaderboard");
+            Debug.LogWarning("[LeaderboardUI] RankingManager is null, cannot refresh leaderboard");
             return;
         }
         
         var topPlayers = _rankingManager.GetTopPlayers(maxEntriesToShow);
+        
+        Debug.Log($"[LeaderboardUI] Retrieved {topPlayers.Count} entries from RankingManager");
+        
+        if (topPlayers.Count == 0)
+        {
+            Debug.LogWarning("[LeaderboardUI] No entries to display! Leaderboard might be empty or not loaded.");
+        }
 
         foreach (var entry in topPlayers)
         {
+            Debug.Log($"[LeaderboardUI] Creating entry for: {entry.PlayerName} - Score: {entry.Score} - Rank: {entry.Rank}");
             CreateLeaderboardEntry(entry);
         }
 

@@ -62,7 +62,9 @@ public class RankingManager : MonoBehaviour
 
     public List<LeaderboardEntry> GetTopPlayers(int count = 10)
     {
-        return _leaderboardService.GetTopPlayers(count);
+        var entries = _leaderboardService.GetTopPlayers(count);
+        Debug.Log($"[RankingManager] GetTopPlayers({count}) returned {entries.Count} entries");
+        return entries;
     }
 
     public List<LeaderboardEntry> GetAllEntries()
