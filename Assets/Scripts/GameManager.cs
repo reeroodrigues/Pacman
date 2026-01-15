@@ -169,6 +169,41 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SendResultsToGoogleSheets()
+    {
+        var googleSheetsService = FindObjectOfType<GoogleSheetsService>();
+
+        if (googleSheetsService != null)
+        {
+            var playerName = PlayerPrefs.GetString("PlayerName", "Desconhecido");
+            var playerEmail = PlayerPrefs.GetString("PlayerEmail", "");
+            var playerPhone = PlayerPrefs.GetString("PlayerCellphone");
+            var gameResult = $"Score: {Score}";
+            var prizeWon = GetPrizeWon();
+            
+            googleSheetsService.SendPlayerDataWithResult(
+                playerName,
+                playerEmail,
+                playerPhone,
+                gameResult,
+                prizeWon,
+                success => 
+            {
+                if (success)
+                    Debug.Log("Game results sent to Google Sheets");
+                else
+                {
+                    Debug.LogWarning("Failed to send game results to Google Sheets");
+                }
+            });
+        }
+    }
+
+    private string GetPrizeWon()
+    {
+        return "Prize info here";
+    }
+
     public void GameOverFromTimer()
     {
         if (gameOverText) gameOverText.enabled = true;
@@ -541,10 +576,11 @@ public class GameManager : MonoBehaviour
         }
 
         var result = await _rankingManager.SubmitScoreAsync(Score);
-        
+    
         if (result.Success)
         {
             Debug.Log($"Score {Score} submitted successfully to leaderboard");
+            SendResultsToGoogleSheets();
         }
         else
         {

@@ -1,9 +1,10 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 using TMPro;
-using Cysharp.Threading.Tasks;
+using Tools.B2B.PlayerRegistration.Models;
+using Tools.B2B.PlayerRegistration.Services;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Rewards;
 using Zenject;
 
@@ -18,23 +19,30 @@ public class MainMenuController : MonoBehaviour
     [Header("Fallback")]
     [SerializeField] private string fallbackSceneName = "Pacman";
     
-    [Header("UI")]
+    [Header("Input Fields")]
+    [SerializeField] private TMP_InputField nameInputField;
+    [SerializeField] private TMP_InputField emailInputField;
+    [SerializeField] private TMP_InputField cellphoneInputField;
+    
+    [Header("UI Elements")]
     [SerializeField] private Button startButton;
-    
-    [Header("Registration UI")]
+    [SerializeField] private TMP_Text errorMessageText;
     [SerializeField] private GameObject registrationPanel;
-    [SerializeField] private TMP_InputField nameInput;
-    [SerializeField] private TMP_InputField emailInput;
-    [SerializeField] private TMP_InputField phoneInput;
-    [SerializeField] private TextMeshProUGUI errorText;
     
-    private bool _loading;
+    private const string ErrorMessageFillFields = "Por favor, preencha todos os campos.";
+    private const string ErrorMessageInvalidEmail = "Por favor, insira um email válido com @.";
+    private const string ErrorMessageInvalidPhone = "O telefone deve conter apenas números.";
+    
+    private IPlayerRegistrationService _playerRegistrationService;
+    private GoogleSheetsService _googleSheetsService;
     private RankingManager _rankingManager;
+    private bool _loading;
 
     [Inject]
-    public void Construct(RankingManager rankingManager)
+    public void Construct(RankingManager rankingManager, IPlayerRegistrationService playerRegistrationService)
     {
         _rankingManager = rankingManager;
+        _playerRegistrationService = playerRegistrationService;
     }
 
     private void Awake()
@@ -58,33 +66,45 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
-        if (startButton) 
+        SetupGoogleSheetsService();
+        SetupInputFields();
+        
+        if (startButton != null)
+        {
             startButton.onClick.AddListener(OnStartButtonClicked);
+        }
         
         if (EventSystem.current && startButton)
             EventSystem.current.SetSelectedGameObject(startButton.gameObject);
 
         CheckRegistrationStatus();
+        HideErrorMessage();
     }
 
-    private void OnDestroy()
+    private void SetupGoogleSheetsService()
     {
-        if (startButton) 
-            startButton.onClick.RemoveListener(OnStartButtonClicked);
+        _googleSheetsService = FindObjectOfType<GoogleSheetsService>();
+    
+        if (_googleSheetsService == null)
+        {
+            var serviceObj = new GameObject("GoogleSheetsService");
+            _googleSheetsService = serviceObj.AddComponent<GoogleSheetsService>();
+            DontDestroyOnLoad(serviceObj);
+        }
     }
 
-    private void Update()
+    private void SetupInputFields()
     {
-        if (_loading) return;
-        
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-            OnStartButtonClicked();
-            
-#if ENABLE_INPUT_SYSTEM
-        var pad = UnityEngine.InputSystem.Gamepad.current;
-        if (pad != null && pad.buttonSouth.wasPressedThisFrame)
-            OnStartButtonClicked();
-#endif
+        if (cellphoneInputField != null)
+        {
+            cellphoneInputField.contentType = TMP_InputField.ContentType.IntegerNumber;
+            cellphoneInputField.characterValidation = TMP_InputField.CharacterValidation.Integer;
+        }
+
+        if (emailInputField != null)
+        {
+            emailInputField.contentType = TMP_InputField.ContentType.EmailAddress;
+        }
     }
 
     private void CheckRegistrationStatus()
@@ -101,43 +121,56 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (_loading) return;
+        
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            OnStartButtonClicked();
+            
+#if ENABLE_INPUT_SYSTEM
+        var pad = UnityEngine.InputSystem.Gamepad.current;
+        if (pad != null && pad.buttonSouth.wasPressedThisFrame)
+            OnStartButtonClicked();
+#endif
+    }
+
     private async void OnStartButtonClicked()
     {
         if (_loading) return;
 
-        if (_rankingManager == null)
+        Debug.Log("[MainMenuController] Start button clicked");
+        
+        if (_rankingManager != null && _rankingManager.IsPlayerRegistered())
         {
-            Debug.LogWarning("RankingManager not available, starting game without registration");
+            Debug.Log("[MainMenuController] Player already registered, starting game directly");
             StartGame();
             return;
         }
 
-        if (_rankingManager.IsPlayerRegistered())
-        {
-            StartGame();
-            return;
-        }
-
-        var name = nameInput != null ? nameInput.text.Trim() : string.Empty;
-        var email = emailInput != null ? emailInput.text.Trim() : string.Empty;
-        var phone = phoneInput != null ? phoneInput.text.Trim() : string.Empty;
-
-        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone))
-        {
-            ShowError("Por favor, preencha todos os campos");
-            return;
-        }
-
-        ShowError("");
+        Debug.Log("[MainMenuController] Player not registered, attempting registration...");
         
-        if (startButton != null)
-            startButton.interactable = false;
-
-        var success = await _rankingManager.RegisterPlayerAsync(name, email, phone);
+        var playerName = nameInputField.text.Trim();
+        var playerEmail = emailInputField.text.Trim();
+        var playerCellphone = cellphoneInputField.text.Trim();
         
-        if (success)
+        Debug.Log($"[MainMenuController] Form data - Name: '{playerName}', Email: '{playerEmail}', Phone: '{playerCellphone}'");
+
+        var result = await _playerRegistrationService.RegisterPlayerAsync(
+            playerName, 
+            playerEmail,
+            playerCellphone,
+            consent: true);
+        
+        Debug.Log($"[MainMenuController] Registration result: Success={result.Success}, Message='{result.ErrorMessage}'");
+
+        if (result.Success)
         {
-            Debug.Log($"Player {name} registered successfully");
+            HideErrorMessage();
+            
+            await RegisterWithRankingManager(playerName, playerEmail, playerCellphone);
+            
+            SendToGoogleSheets(playerName, playerEmail, playerCellphone);
             
             if (registrationPanel != null)
                 registrationPanel.SetActive(false);
@@ -146,20 +179,104 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            ShowError("Falha no registro. Tente novamente.");
-            
-            if (startButton != null)
-                startButton.interactable = true;
+            ShowErrorMessage(result.ErrorMessage);
         }
     }
 
-    private void ShowError(string message)
+    private async System.Threading.Tasks.Task RegisterWithRankingManager(string name, string email, string phone)
     {
-        if (errorText != null)
-            errorText.text = message;
+        if (_rankingManager != null)
+        {
+            var success = await _rankingManager.RegisterPlayerAsync(name, email, phone);
+            if (success)
+            {
+                Debug.Log($"Player {name} registered with RankingManager");
+            }
+            else
+            {
+                Debug.LogWarning("Failed to register player with RankingManager");
+            }
+        }
     }
 
-    private void StartGame()
+    private void SendToGoogleSheets(string name, string email, string phone)
+    {
+        if (_googleSheetsService != null)
+        {
+            _googleSheetsService.SendPlayerData(name, email, phone, success =>
+            {
+                if (success)
+                    Debug.Log("Player data sent to Google Sheets successfully");
+                else
+                    Debug.LogWarning("Failed to send player data to Google Sheets");
+            });
+        }
+    }
+
+    private void ShowErrorMessage(string message)
+    {
+        if (errorMessageText != null)
+        {
+            errorMessageText.text = message;
+            errorMessageText.gameObject.SetActive(true);
+        }
+    }
+
+    private void HideErrorMessage()
+    {
+        if (errorMessageText != null)
+            errorMessageText.gameObject.SetActive(false);
+    }
+
+    private async void StartGame()
+    {
+        if (_loading) return;
+
+        Debug.Log("[MainMenuController] StartGame() called");
+        
+        if (_rankingManager != null && _rankingManager.IsPlayerRegistered())
+        {
+            Debug.Log("[MainMenuController] Player already registered, loading game directly");
+            LoadGameScene();
+            return;
+        }
+
+        Debug.Log("[MainMenuController] Player not registered, attempting registration...");
+        
+        var playerName = nameInputField.text.Trim();
+        var playerEmail = emailInputField.text.Trim();
+        var playerCellphone = cellphoneInputField.text.Trim();
+        
+        Debug.Log($"[MainMenuController] Form data - Name: '{playerName}', Email: '{playerEmail}', Phone: '{playerCellphone}'");
+
+        var result = await _playerRegistrationService.RegisterPlayerAsync(
+            playerName, 
+            playerEmail,
+            playerCellphone,
+            consent: true);
+        
+        Debug.Log($"[MainMenuController] Registration result: Success={result.Success}, Message='{result.ErrorMessage}'");
+
+        if (result.Success)
+        {
+            HideErrorMessage();
+            
+            await RegisterWithRankingManager(playerName, playerEmail, playerCellphone);
+            
+            SendToGoogleSheets(playerName, playerEmail, playerCellphone);
+            
+            if (registrationPanel != null)
+                registrationPanel.SetActive(false);
+            
+            LoadGameScene();
+        }
+        else
+        {
+            ShowErrorMessage(result.ErrorMessage);
+        }
+    }
+
+    private void LoadGameScene()
     {
         if (_loading) return;
         _loading = true;
@@ -170,7 +287,15 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(fallbackSceneName, LoadSceneMode.Single);
+            SceneManager.LoadScene(fallbackSceneName);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (startButton != null)
+        {
+            startButton.onClick.RemoveListener(OnStartButtonClicked);
         }
     }
 }

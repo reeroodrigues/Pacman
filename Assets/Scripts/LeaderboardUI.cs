@@ -26,7 +26,15 @@ public class LeaderboardUI  : MonoBehaviour
     public void Construct(RankingManager rankingManager)
     {
         _rankingManager = rankingManager;
-        _rankingManager.OnLeaderboardUpdated += OnLeaderboardUpdated;
+        
+        if (_rankingManager != null)
+        {
+            _rankingManager.OnLeaderboardUpdated += OnLeaderboardUpdated;
+        }
+        else
+        {
+            Debug.LogError("RankingManager is null in LeaderboardUI.Construct!");
+        }
     }
 
     private void Start()
@@ -56,6 +64,12 @@ public class LeaderboardUI  : MonoBehaviour
     {
         ClearEntries();
         
+        if (_rankingManager == null)
+        {
+            Debug.LogWarning("RankingManager is null, cannot refresh leaderboard");
+            return;
+        }
+        
         var topPlayers = _rankingManager.GetTopPlayers(maxEntriesToShow);
 
         foreach (var entry in topPlayers)
@@ -68,9 +82,18 @@ public class LeaderboardUI  : MonoBehaviour
 
     private void UpdatePlayerInfo()
     {
+        if (_rankingManager == null)
+        {
+            if (playerRankText != null)
+                playerRankText.text = "Error";
+            if (playerScoreText != null)
+                playerScoreText.text = "-----";
+            return;
+        }
+        
         if (!_rankingManager.IsPlayerRegistered())
         {
-            if(playerScoreText != null)
+            if(playerRankText != null)
                 playerRankText.text = "Not Registered";
 
             if (playerScoreText != null)
