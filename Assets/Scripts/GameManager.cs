@@ -5,11 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Rewards;
 using TMPro;
+using Zenject;
+using Cysharp.Threading.Tasks;
 
 [DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    private RankingManager _rankingManager;
 
     [Header("Refs")]
     [SerializeField] private Ghost[] ghosts;
@@ -60,6 +64,12 @@ public class GameManager : MonoBehaviour
     private bool _noHasOtherPrizes = false; // indica que só resta o top prize (labubu)
 
     private const string ZERO_PRIZE_ID = "canetazero";
+
+    [Inject]
+    public void Construct(RankingManager rankingManager)
+    {
+        _rankingManager = rankingManager;
+    }
 
     private void Awake()
     {
@@ -204,6 +214,8 @@ public class GameManager : MonoBehaviour
             // Limpa payload anterior
             VictoryPayload.Clear();
             VictoryPayload.Score = Score;
+
+            SubmitScoreToLeaderboard().Forget();
 
             // 1) Caso especial: zero pontos = forçar canetazero e mensagem especial
             if (Score == 0)
@@ -511,6 +523,32 @@ public class GameManager : MonoBehaviour
         else
         {
             GameOverFromDeath();
+        }
+    }
+
+    private async UniTaskVoid SubmitScoreToLeaderboard()
+    {
+        if (_rankingManager == null)
+        {
+            Debug.LogWarning("RankingManager not available for score submission");
+            return;
+        }
+
+        if (!_rankingManager.IsPlayerRegistered())
+        {
+            Debug.Log("Player not registered, skipping leaderboard score submission");
+            return;
+        }
+
+        var result = await _rankingManager.SubmitScoreAsync(Score);
+        
+        if (result.Success)
+        {
+            Debug.Log($"Score {Score} submitted successfully to leaderboard");
+        }
+        else
+        {
+            Debug.LogWarning($"Failed to submit score: {result.Message}");
         }
     }
 }
