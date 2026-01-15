@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using Tools.Leaderboard.Models;
-using Tools.Leaderboard.Services;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -98,7 +96,7 @@ public class LeaderboardUI  : MonoBehaviour
         var entry = _rankingManager.GetCurrentPlayerEntry();
 
         if (playerRankText != null)
-            playerRankText.text = rank > 0 ? $"Rank: #{rank}" : "Unranked";
+            playerRankText.text = rank > 0 ? $"Rank: #{rank}" : "";
         
         if(playerScoreText != null &&  entry != null)
             playerScoreText.text = $"Score: {entry.Score}";

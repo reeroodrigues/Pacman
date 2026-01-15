@@ -564,27 +564,14 @@ public class GameManager : MonoBehaviour
     private async UniTaskVoid SubmitScoreToLeaderboard()
     {
         if (_rankingManager == null)
-        {
-            Debug.LogWarning("RankingManager not available for score submission");
             return;
-        }
 
         if (!_rankingManager.IsPlayerRegistered())
-        {
-            Debug.Log("Player not registered, skipping leaderboard score submission");
             return;
-        }
 
         var result = await _rankingManager.SubmitScoreAsync(Score);
     
         if (result.Success)
-        {
-            Debug.Log($"Score {Score} submitted successfully to leaderboard");
             SendResultsToGoogleSheets();
-        }
-        else
-        {
-            Debug.LogWarning($"Failed to submit score: {result.Message}");
-        }
     }
 }

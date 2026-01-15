@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Tools.Leaderboard::Tools.Leaderboard.Models.LeaderboardConfig
   maxEntries: 100
   sortDescending: 1
-  topPlayersToDisplay: 10
+  topPlayersToDisplay: 100
   persistLocally: 1
   saveKey: pacman_leaderboard
   separateByEvent: 1

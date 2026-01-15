@@ -7,10 +7,10 @@ public class PersistentPlayerRegistrationService : IPlayerRegistrationService
 {
     private readonly PlayerRegistrationService _innerService;
     
-    private const string PLAYER_NAME_KEY = "PlayerName";
-    private const string PLAYER_EMAIL_KEY = "PlayerEmail";
-    private const string PLAYER_PHONE_KEY = "PlayerCellphone";
-    private const string PLAYER_REGISTERED_KEY = "PlayerRegistered";
+    private const string PlayerNameKey = "PlayerName";
+    private const string PlayerEmailKey = "PlayerEmail";
+    private const string PlayerPhoneKey = "PlayerCellphone";
+    private const string PlayerRegisteredKey = "PlayerRegistered";
     
     private PlayerRegistrationData _currentPlayer;
 
@@ -56,7 +56,6 @@ public class PersistentPlayerRegistrationService : IPlayerRegistrationService
     public bool IsPlayerRegistered()
     {
         var isRegistered = _currentPlayer != null;
-        Debug.Log($"[PersistentPlayerRegistration] IsPlayerRegistered called: {isRegistered}");
         return isRegistered;
     }
 
@@ -69,54 +68,34 @@ public class PersistentPlayerRegistrationService : IPlayerRegistrationService
 
     private void SaveToPlayerPrefs(PlayerRegistrationData playerData)
     {
-        PlayerPrefs.SetString(PLAYER_NAME_KEY, playerData.Name);
-        PlayerPrefs.SetString(PLAYER_EMAIL_KEY, playerData.Email);
-        PlayerPrefs.SetString(PLAYER_PHONE_KEY, playerData.PhoneNumber);
-        PlayerPrefs.SetInt(PLAYER_REGISTERED_KEY, 1);
+        PlayerPrefs.SetString(PlayerNameKey, playerData.Name);
+        PlayerPrefs.SetString(PlayerEmailKey, playerData.Email);
+        PlayerPrefs.SetString(PlayerPhoneKey, playerData.PhoneNumber);
+        PlayerPrefs.SetInt(PlayerRegisteredKey, 1);
         PlayerPrefs.Save();
-        
-        Debug.Log($"[PersistentPlayerRegistration] Saved to PlayerPrefs: {playerData.Name}");
     }
 
     private void LoadFromPlayerPrefs()
     {
-        Debug.Log("[PersistentPlayerRegistration] Attempting to load from PlayerPrefs...");
-        
-        var isRegistered = PlayerPrefs.GetInt(PLAYER_REGISTERED_KEY, 0);
-        Debug.Log($"[PersistentPlayerRegistration] PlayerRegistered flag: {isRegistered}");
+        var isRegistered = PlayerPrefs.GetInt(PlayerRegisteredKey, 0);
         
         if (isRegistered == 1)
         {
-            var name = PlayerPrefs.GetString(PLAYER_NAME_KEY, "");
-            var email = PlayerPrefs.GetString(PLAYER_EMAIL_KEY, "");
-            var phone = PlayerPrefs.GetString(PLAYER_PHONE_KEY, "");
-            
-            Debug.Log($"[PersistentPlayerRegistration] Retrieved - Name: '{name}', Email: '{email}', Phone: '{phone}'");
+            var name = PlayerPrefs.GetString(PlayerNameKey, "");
+            var email = PlayerPrefs.GetString(PlayerEmailKey, "");
+            var phone = PlayerPrefs.GetString(PlayerPhoneKey, "");
             
             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email))
-            {
                 _currentPlayer = new PlayerRegistrationData(name, email, phone, true);
-                Debug.Log($"[PersistentPlayerRegistration] ✅ Successfully loaded player: {name}");
-            }
-            else
-            {
-                Debug.LogWarning("[PersistentPlayerRegistration] ❌ Name or Email is empty!");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("[PersistentPlayerRegistration] ❌ No registration found in PlayerPrefs");
         }
     }
 
     private void ClearPlayerPrefs()
     {
-        PlayerPrefs.DeleteKey(PLAYER_NAME_KEY);
-        PlayerPrefs.DeleteKey(PLAYER_EMAIL_KEY);
-        PlayerPrefs.DeleteKey(PLAYER_PHONE_KEY);
-        PlayerPrefs.DeleteKey(PLAYER_REGISTERED_KEY);
+        PlayerPrefs.DeleteKey(PlayerNameKey);
+        PlayerPrefs.DeleteKey(PlayerEmailKey);
+        PlayerPrefs.DeleteKey(PlayerPhoneKey);
+        PlayerPrefs.DeleteKey(PlayerRegisteredKey);
         PlayerPrefs.Save();
-        
-        Debug.Log("[PersistentPlayerRegistration] Cleared PlayerPrefs");
     }
 }

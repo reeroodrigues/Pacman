@@ -73,9 +73,6 @@ public class MainMenuController : MonoBehaviour
         {
             startButton.onClick.AddListener(OnStartButtonClicked);
         }
-        
-        if (EventSystem.current && startButton)
-            EventSystem.current.SetSelectedGameObject(startButton.gameObject);
 
         ClearPlayerRegistrationForNewSession();
         HideErrorMessage();
@@ -95,22 +92,50 @@ public class MainMenuController : MonoBehaviour
 
     private void SetupInputFields()
     {
+        if (nameInputField != null)
+        {
+            nameInputField.lineType = TMP_InputField.LineType.SingleLine;
+            nameInputField.onSubmit.AddListener(OnInputFieldSubmit);
+        }
+        
+        if (emailInputField != null)
+        {
+            emailInputField.contentType = TMP_InputField.ContentType.EmailAddress;
+            emailInputField.lineType = TMP_InputField.LineType.SingleLine;
+            emailInputField.onSubmit.AddListener(OnInputFieldSubmit);
+        }
+        
         if (cellphoneInputField != null)
         {
             cellphoneInputField.contentType = TMP_InputField.ContentType.IntegerNumber;
             cellphoneInputField.characterValidation = TMP_InputField.CharacterValidation.Integer;
+            cellphoneInputField.lineType = TMP_InputField.LineType.SingleLine;
+            cellphoneInputField.onSubmit.AddListener(OnInputFieldSubmit);
         }
-
-        if (emailInputField != null)
+    }
+    
+    private void OnInputFieldSubmit(string text)
+    {
+        if (nameInputField != null && nameInputField.isFocused)
         {
-            emailInputField.contentType = TMP_InputField.ContentType.EmailAddress;
+            emailInputField?.Select();
+            return;
+        }
+        
+        if (emailInputField != null && emailInputField.isFocused)
+        {
+            cellphoneInputField?.Select();
+            return;
+        }
+        
+        if (cellphoneInputField != null && cellphoneInputField.isFocused)
+        {
+            cellphoneInputField.DeactivateInputField();
         }
     }
 
     private void ClearPlayerRegistrationForNewSession()
     {
-        Debug.Log("[MainMenuController] B2B Mode: Clearing player registration for new session");
-        
         PlayerPrefs.DeleteKey("PlayerRegistered");
         PlayerPrefs.DeleteKey("PlayerName");
         PlayerPrefs.DeleteKey("PlayerEmail");
@@ -121,8 +146,6 @@ public class MainMenuController : MonoBehaviour
         
         if (registrationPanel != null)
             registrationPanel.SetActive(true);
-        
-        Debug.Log("[MainMenuController] Registration cleared. Ready for new player.");
     }
     
     private void ClearInputFields()
@@ -137,39 +160,19 @@ public class MainMenuController : MonoBehaviour
             cellphoneInputField.text = "";
     }
 
-    private void Update()
-    {
-        if (_loading) return;
-        
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-            OnStartButtonClicked();
-            
-#if ENABLE_INPUT_SYSTEM
-        var pad = UnityEngine.InputSystem.Gamepad.current;
-        if (pad != null && pad.buttonSouth.wasPressedThisFrame)
-            OnStartButtonClicked();
-#endif
-    }
-
     private async void OnStartButtonClicked()
     {
         if (_loading) return;
-
-        Debug.Log("[MainMenuController] Start button clicked - B2B Event Mode");
         
         var playerName = nameInputField.text.Trim();
         var playerEmail = emailInputField.text.Trim();
         var playerCellphone = cellphoneInputField.text.Trim();
-        
-        Debug.Log($"[MainMenuController] Form data - Name: '{playerName}', Email: '{playerEmail}', Phone: '{playerCellphone}'");
 
         var result = await _playerRegistrationService.RegisterPlayerAsync(
             playerName, 
             playerEmail,
             playerCellphone,
             consent: true);
-        
-        Debug.Log($"[MainMenuController] Registration result: Success={result.Success}, Message='{result.ErrorMessage}'");
 
         if (result.Success)
         {
@@ -255,6 +258,21 @@ public class MainMenuController : MonoBehaviour
         if (startButton != null)
         {
             startButton.onClick.RemoveListener(OnStartButtonClicked);
+        }
+        
+        if (nameInputField != null)
+        {
+            nameInputField.onSubmit.RemoveListener(OnInputFieldSubmit);
+        }
+        
+        if (emailInputField != null)
+        {
+            emailInputField.onSubmit.RemoveListener(OnInputFieldSubmit);
+        }
+        
+        if (cellphoneInputField != null)
+        {
+            cellphoneInputField.onSubmit.RemoveListener(OnInputFieldSubmit);
         }
     }
 }
