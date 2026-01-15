@@ -160,7 +160,7 @@ public class MainMenuController : MonoBehaviour
             cellphoneInputField.text = "";
     }
 
-    private async void OnStartButtonClicked()
+    public async void OnStartButtonClicked()
     {
         if (_loading) return;
         
