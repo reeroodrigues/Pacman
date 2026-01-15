@@ -31,10 +31,6 @@ public class LeaderboardUI  : MonoBehaviour
         {
             _rankingManager.OnLeaderboardUpdated += OnLeaderboardUpdated;
         }
-        else
-        {
-            Debug.LogError("RankingManager is null in LeaderboardUI.Construct!");
-        }
     }
 
     private void Start()
@@ -65,23 +61,12 @@ public class LeaderboardUI  : MonoBehaviour
         ClearEntries();
         
         if (_rankingManager == null)
-        {
-            Debug.LogWarning("[LeaderboardUI] RankingManager is null, cannot refresh leaderboard");
             return;
-        }
         
         var topPlayers = _rankingManager.GetTopPlayers(maxEntriesToShow);
-        
-        Debug.Log($"[LeaderboardUI] Retrieved {topPlayers.Count} entries from RankingManager");
-        
-        if (topPlayers.Count == 0)
-        {
-            Debug.LogWarning("[LeaderboardUI] No entries to display! Leaderboard might be empty or not loaded.");
-        }
 
         foreach (var entry in topPlayers)
         {
-            Debug.Log($"[LeaderboardUI] Creating entry for: {entry.PlayerName} - Score: {entry.Score} - Rank: {entry.Rank}");
             CreateLeaderboardEntry(entry);
         }
 
@@ -93,19 +78,19 @@ public class LeaderboardUI  : MonoBehaviour
         if (_rankingManager == null)
         {
             if (playerRankText != null)
-                playerRankText.text = "Error";
+                playerRankText.text = "";
             if (playerScoreText != null)
-                playerScoreText.text = "-----";
+                playerScoreText.text = "";
             return;
         }
         
         if (!_rankingManager.IsPlayerRegistered())
         {
             if(playerRankText != null)
-                playerRankText.text = "Not Registered";
+                playerRankText.text = "";
 
             if (playerScoreText != null)
-                playerScoreText.text = "-----";
+                playerScoreText.text = "";
             return;
         }
 

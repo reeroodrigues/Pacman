@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MoveButtons : MonoBehaviour
 {
-    public enum Side { Left, Right, RightVictory }
+    public enum Side { Left, Right, RightVictory, Up, Down }
     public Side buttonSide = Side.Left;
 
     public float speed = 400f; 
