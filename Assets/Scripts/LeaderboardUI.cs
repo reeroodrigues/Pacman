@@ -12,7 +12,6 @@ public class LeaderboardUI  : MonoBehaviour
     [SerializeField] private GameObject entryPrefab;
     [SerializeField] private Transform entryContainer;
     [SerializeField] private Button refreshButton;
-    [SerializeField] private Button closeButton;
     [SerializeField] private TextMeshProUGUI playerRankText;
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private int maxEntriesToShow = 10;
@@ -35,9 +34,6 @@ public class LeaderboardUI  : MonoBehaviour
     {
         if (refreshButton != null)
             refreshButton.onClick.AddListener(RefreshLeaderboard);
-
-        if (closeButton != null)
-            closeButton.onClick.AddListener(() => leaderboardPanel.SetActive(false));
 
         RefreshLeaderboard();
     }
