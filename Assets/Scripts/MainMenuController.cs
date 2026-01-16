@@ -180,8 +180,6 @@ public class MainMenuController : MonoBehaviour
             
             await RegisterWithRankingManager(playerName, playerEmail, playerCellphone);
             
-            SendToGoogleSheets(playerName, playerEmail, playerCellphone);
-            
             if (registrationPanel != null)
                 registrationPanel.SetActive(false);
             
@@ -206,20 +204,6 @@ public class MainMenuController : MonoBehaviour
             {
                 Debug.LogWarning("Failed to register player with RankingManager");
             }
-        }
-    }
-
-    private void SendToGoogleSheets(string name, string email, string phone)
-    {
-        if (_googleSheetsService != null)
-        {
-            _googleSheetsService.SendPlayerData(name, email, phone, success =>
-            {
-                if (success)
-                    Debug.Log("Player data sent to Google Sheets successfully");
-                else
-                    Debug.LogWarning("Failed to send player data to Google Sheets");
-            });
         }
     }
 
