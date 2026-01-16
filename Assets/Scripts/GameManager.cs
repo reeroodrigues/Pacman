@@ -165,6 +165,8 @@ public class GameManager : MonoBehaviour
         if (goToVictoryOnClear)
         {
             PrepareVictoryPayload(true);
+            SendResultsToGoogleSheets();
+            SubmitScoreToLeaderboard().Forget();
             StartTransitionToVictory(VictoryPayload.Message, VictoryPayload.PrizeSprite, winDelay);
         }
     }
@@ -201,7 +203,32 @@ public class GameManager : MonoBehaviour
 
     private string GetPrizeWon()
     {
-        return "Prize info here";
+        if (string.IsNullOrEmpty(VictoryPayload.PrizeItemId))
+        {
+            return "Nenhum prêmio";
+        }
+
+        var svc = RewardService.I;
+        if (svc == null || svc.Config == null)
+        {
+            return VictoryPayload.PrizeItemId;
+        }
+
+        foreach (var category in svc.Config.categories)
+        {
+            if (category.items != null)
+            {
+                foreach (var item in category.items)
+                {
+                    if (item.id == VictoryPayload.PrizeItemId)
+                    {
+                        return item.name;
+                    }
+                }
+            }
+        }
+
+        return VictoryPayload.PrizeItemId;
     }
 
     public void GameOverFromTimer()
@@ -211,6 +238,8 @@ public class GameManager : MonoBehaviour
         if (goToVictoryOnGameOver)
         {
             PrepareVictoryPayload(false);
+            SendResultsToGoogleSheets();
+            SubmitScoreToLeaderboard().Forget();
             StartTransitionToVictory(VictoryPayload.Message, VictoryPayload.PrizeSprite, loseDelay);
         }
     }
@@ -227,6 +256,8 @@ public class GameManager : MonoBehaviour
         if (goToVictoryOnGameOver)
         {
             PrepareVictoryPayload(false);
+            SendResultsToGoogleSheets();
+            SubmitScoreToLeaderboard().Forget();
             StartTransitionToVictory(VictoryPayload.Message, VictoryPayload.PrizeSprite, loseDelay);
         }
     }
@@ -249,8 +280,6 @@ public class GameManager : MonoBehaviour
             // Limpa payload anterior
             VictoryPayload.Clear();
             VictoryPayload.Score = Score;
-
-            SubmitScoreToLeaderboard().Forget();
 
             // 1) Caso especial: zero pontos = forçar canetazero e mensagem especial
             if (Score == 0)
@@ -570,8 +599,5 @@ public class GameManager : MonoBehaviour
             return;
 
         var result = await _rankingManager.SubmitScoreAsync(Score);
-    
-        if (result.Success)
-            SendResultsToGoogleSheets();
     }
 }
